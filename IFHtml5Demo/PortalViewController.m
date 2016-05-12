@@ -20,18 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"帆软Html5集成Demo";
+    
     self.view.backgroundColor = [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0f];
     
-    NSString *url = @"http://192.168.101.254:8075/WebReport/ReportServer?reportlet=testChart.cpt&op=h5";
+    NSString *url = @"http://env.finedevelop.com:56109/h5test/ReportServer?reportlet=nongxin/zhuxingtu.cpt&op=h5";
     
-    Html5ReportWebView *webView1 = [[Html5ReportWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250) andUrl:url];
-    Html5ReportWebView *webView2 = [[Html5ReportWebView alloc] initWithFrame:CGRectMake(0, 270, self.view.frame.size.width, 250) andUrl:url];
+    Html5ReportWebView *webView = [[Html5ReportWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) andUrl:url];
     
-    webView1.hyperLinkDelegate = self;
-    webView2.hyperLinkDelegate = self;
+    webView.hyperLinkDelegate = self;
     
-    [self.view addSubview:webView1];
-    [self.view addSubview:webView2];
+    [self.view addSubview:webView];
 
 }
 

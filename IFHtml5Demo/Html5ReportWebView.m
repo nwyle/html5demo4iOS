@@ -34,9 +34,14 @@
 }
 
 //这个方法里处理超链请求，参数url就是超链的地址
-- (void) doHyper: (NSString *) url {
-    Html5ReportWebView *linkView = [[Html5ReportWebView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 600) andUrl:url];
+- (void) doHyper: (NSDictionary *) hyperLink {
+    NSString *url = [hyperLink objectForKey:@"url"];
+    NSString *name = [hyperLink objectForKey:@"name"];
+    
+    Html5ReportWebView *linkView = [[Html5ReportWebView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) andUrl:url];
+    linkView.hyperLinkDelegate = self.hyperLinkDelegate;
     UIViewController *linkViewController = [[UIViewController alloc] init];
+    linkViewController.title = name;
     linkViewController.view.backgroundColor = [UIColor whiteColor];
     [linkViewController.view addSubview:linkView];
     [self.hyperLinkDelegate pushViewController:linkViewController withAnimate:YES];
